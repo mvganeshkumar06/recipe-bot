@@ -1,6 +1,6 @@
 import React from 'react';
 import Recipe from './Recipe';
-
+import './RecipeArray.css'
 
 const RecipeArray =(props)=>{
 
@@ -11,24 +11,29 @@ const RecipeArray =(props)=>{
     }
 
     else{
-
-        return (
+        
+        var RecipeArray= recipes.map((item)=>{
             
-            recipes.map((item)=>{
-            
-                return (<Recipe 
+            return <Recipe 
                 key={item.id}
                 title={item.title}
-                // image={item.imageUrls[0]}
+                image={item.image}
                 time={item.readyInMinutes}
-                />)
+                calories={item.nutrition.nutrients[0].amount}
+                protiens={item.nutrition.nutrients[8].amount}
+                carbs={item.nutrition.nutrients[3].amount}
+                fats={item.nutrition.nutrients[1].amount}
+
+                />
             
             })
-        
-        );
-
-
     }
+
+    return(
+        <div className='list'>
+            {RecipeArray}
+        </div>
+    );
     
 }
 

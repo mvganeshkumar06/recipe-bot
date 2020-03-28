@@ -1,0 +1,34 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.app-container {
+    text-align: center;
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+}
+
+.text{
+    color: white;
+    font-size: bolder;
+}
+
+.btn{
+
+    background-color: rgb(250, 150, 0);
+    border: none;
+    color: white;
+    padding: 3px 3px;
+    text-align: center;
+    font-size: small;
+    font-weight: bolder;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 5px;
+
+}
+
+.slider{
+    cursor: pointer;
+}
