@@ -1,10 +1,9 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import RecipeArray from './RecipeArray';
 import './App.css';
 import axios from 'axios';
 
 require('dotenv').config();
-
 
 
 const App =()=>{
@@ -15,12 +14,6 @@ const App =()=>{
   
   const [validation,setValidation]=useState('');
 
-
-  useEffect(()=>{
-    
-    console.log(key);
-
-  })
 
   async function fetchData (searchValue,slideValue){
     
@@ -33,11 +26,20 @@ const App =()=>{
     });
 
 
-    console.log(response.data.results);
 
+    if(response.data.results.length===0 || !response.data.results){
     
-    setRecipes(response.data.results);
+      setValidation(<h3 className='alert'>Sorry no food item found !  Try something else  :)</h3>);
+    
+    }
+    
+    else{
 
+      //setValidation('');
+      console.log(response.data.results);
+      setRecipes(response.data.results);
+    
+    }
     
 
   }
@@ -80,6 +82,8 @@ const App =()=>{
     document.querySelector('.search').value='';
 
     document.querySelector('.slider').value=1;
+
+    setValidation('');
 
   }
 

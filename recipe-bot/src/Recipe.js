@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Recipe.css';
 
 const Recipe =(props)=>{   
     
     const {title,image,time,calories,protiens,carbs,fats,ingredientsArray,instructionsArray} = props;
+
+    const [instructions,setInstructions]=useState(false);
+    const [ingredients,setIngredients]=useState(false);
+
+    const showInstructions =()=>{
+
+        if(instructions){
+            setInstructions(false);
+        }
+
+        else{
+            setInstructions(true);
+        }
+
+    }
+
+    const showIngredients =()=>{
+
+        if(ingredients){
+            setIngredients(false);
+        }
+
+        else{
+            setIngredients(true);
+        }
+    }
 
     return(
 
@@ -17,6 +43,7 @@ const Recipe =(props)=>{
                 <img src={`${image}`} alt='food' width='300' height='300'/>
 
                 <p>
+                    <br/> <br/>
                     Ready In: {time} minutes
                     <br/> <br/>
                     
@@ -38,29 +65,26 @@ const Recipe =(props)=>{
                 </p>
                 
 
-                <div className='ingredients'>
+                <button className='btn' onClick={showIngredients}>Show Ingredients</button>
+                <br/> <br/>
 
-                    Ingredients
-                    <br/><br/>
+                {ingredients?'Ingredients':null}
+                <br/><br/>
 
-                    {ingredientsArray}
+                {ingredients?ingredientsArray:null}
 
-                </div>
-
-                <br/>
+                <br/> <br/>
                 
-                <button className='btn'>Get Instructions</button>
+                <button className='btn' onClick={showInstructions}>Show Instructions</button>
                 
                 <br/> <br/>
-            
-                <div className='instructions'>
 
-                    Instructions
-                    <br/><br/>
 
-                    {instructionsArray}
-            
-                </div>
+                {instructions?'Instructions':null}
+                <br/><br/>
+
+                {instructions?instructionsArray:null}
+
             
             </div>
 

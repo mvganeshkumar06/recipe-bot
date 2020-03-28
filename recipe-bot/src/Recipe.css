@@ -3,18 +3,18 @@
     border: 1px solid black;
     width: 500px;
     margin: 10px 0px 10px 20px;
-    padding: 4px;
+    padding: 5px 5px 25px 5px;
     box-shadow: 1px 1px 2.5px black;
     color: white;
     font-size: larger;
     
 }
 
-.recipe-card:hover{
+/* .recipe-card:hover{
 
     transform: scale(1.02,1.02);
 
-}
+} */
 
 .recipe-container{
 
@@ -29,10 +29,15 @@
     color: white;
     padding: 3px 3px;
     text-align: center;
-    font-size: small;
+    font-size: medium;
     font-weight: bolder;
     text-decoration: none;
     cursor: pointer;
     margin-bottom: 5px;
 
+}
+
+.btn:hover{
+    transform: scale(1.1,1.1);
+    box-shadow: 2px 2px black ;
 }
