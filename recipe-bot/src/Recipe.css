@@ -20,3 +20,18 @@
     text-align: center;
 
 }
+
+.btn{
+
+    background-color: rgb(250, 150, 0);
+    border: none;
+    color: white;
+    padding: 3px 3px;
+    text-align: center;
+    font-size: small;
+    font-weight: bolder;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 5px;
+
+}

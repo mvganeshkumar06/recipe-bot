@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RecipeArray from './RecipeArray';
 import './App.css';
+import axios from 'axios';
 
 require('dotenv').config();
 
@@ -15,19 +16,26 @@ const App =()=>{
   
   async function fetchData (searchValue,slideValue){
     
-    const resp = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=${slideValue}&addRecipeNutrition=true&apiKey=${key}`);
+    const response = await axios({ 
+        
+        method: 'get',
+
+        url: `https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=${slideValue}&addRecipeNutrition=true&apiKey=${key}`,
+
+        // headers: {
+
+        // }
+    
+    });
 
 
-    const data = await resp.json();
+    console.log(response.data.results);
 
-
-    console.log(data.results);
-
-
-    setRecipes(data.results);
-
+    
+    setRecipes(response.data.results);
 
   }
+
 
 
   var searchValue = '';
