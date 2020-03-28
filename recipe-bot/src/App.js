@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import RecipeArray from './RecipeArray';
 import './App.css';
 import axios from 'axios';
@@ -6,15 +6,21 @@ import axios from 'axios';
 require('dotenv').config();
 
 
-const App =()=>{
 
-  const key='77b19331e39a4bf2939482c7d22ebca6';
-//   const key= process.env.key;
+const App =()=>{
+  
+  const key= process.env.REACT_APP_KEY;
   
   const [recipes,setRecipes]=useState([]);
   
   const [validation,setValidation]=useState('');
 
+
+  useEffect(()=>{
+    
+    console.log(key);
+
+  })
 
   async function fetchData (searchValue,slideValue){
     
@@ -22,7 +28,7 @@ const App =()=>{
         
         method: 'get',
 
-        url: `https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=${slideValue}&addRecipeNutrition=true&apiKey=${key}`,
+        url: `https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=${slideValue}&instructionsRequired=true&addRecipeNutrition=true&apiKey=${key}`,
     
     });
 
@@ -31,6 +37,8 @@ const App =()=>{
 
     
     setRecipes(response.data.results);
+
+    
 
   }
 
@@ -57,10 +65,6 @@ const App =()=>{
         
         fetchData(searchValue,slideValue);
 
-        document.querySelector('.btn').value='';
-
-        document.querySelector('.slider').value=1;
-
     }
 
     else{
@@ -68,6 +72,14 @@ const App =()=>{
         setValidation(<h3 className='alert'>Enter some food item !</h3>);
 
     }
+
+  }
+
+  const resetData=()=>{
+        
+    document.querySelector('.search').value='';
+
+    document.querySelector('.slider').value=1;
 
   }
 
@@ -83,7 +95,7 @@ const App =()=>{
             
             <br/><br/>
                 
-            <input type='text' placeholder='Enter food name ...' onChange={getSearchValue} required></input>
+            <input className='search' type='text' placeholder='Enter food name ...' onChange={getSearchValue} required ></input>
             
             <br/><br/><br/>
      
@@ -96,6 +108,10 @@ const App =()=>{
             <br/><br/>
 
             <button className='btn' onClick={sendData}>Find me Recipes</button>
+
+            <br/> <br/>
+
+            <button className='btn' type='reset' onClick={resetData}>Reset Values</button>
 
             <br/> <br/>
 

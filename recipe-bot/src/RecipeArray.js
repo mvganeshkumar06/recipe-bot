@@ -24,6 +24,13 @@ const RecipeArray =(props)=>{
                 protiens={item.nutrition.nutrients[8].amount}
                 carbs={item.nutrition.nutrients[3].amount}
                 fats={item.nutrition.nutrients[1].amount}
+                ingredientsArray={item.nutrition.ingredients.map(ingredient=>{
+                    return ingredient.name
+                })}
+
+                instructionsArray={item.analyzedInstructions[0].steps.map(info=>{
+                    return info.step;
+                })}
 
                 />
             
