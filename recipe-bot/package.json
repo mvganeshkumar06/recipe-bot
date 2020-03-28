@@ -10,7 +10,6 @@
     "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-render-html": "^0.6.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
