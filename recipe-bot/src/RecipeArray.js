@@ -16,6 +16,7 @@ const RecipeArray =(props)=>{
             
             return <Recipe 
                 key={item.id}
+                id={item.id}
                 title={item.title}
                 image={item.image}
                 time={item.readyInMinutes}
@@ -23,7 +24,6 @@ const RecipeArray =(props)=>{
                 protiens={item.nutrition.nutrients[8].amount}
                 carbs={item.nutrition.nutrients[3].amount}
                 fats={item.nutrition.nutrients[1].amount}
-                id={item.id}
 
                 />
             

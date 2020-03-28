@@ -32,3 +32,11 @@
 .slider{
     cursor: pointer;
 }
+
+.alert{
+
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+
+}

@@ -1,27 +1,40 @@
-import React from 'react'
-import './Recipe.css'
+import React,{useState} from 'react';
+import './Recipe.css';
 import axios from 'axios';
-// import renderHTML from 'react-render-html';
 
 const Recipe =(props)=>{   
     
-    const {title,image,time,calories,protiens,carbs,fats,id} = props;
-    
-    var html=''
+    const {id,title,image,time,calories,protiens,carbs,fats} = props;
 
+    const [instructions,setInstructions]=useState([]);
+
+    const key='77b19331e39a4bf2939482c7d22ebca6';
+    
     async function showIngredients(){
 
         const response = await axios({
                 
                 method: 'get',
-                url: `https://api.spoonacular.com/recipes/${id}/ingredientWidget`,
-
-                headers: {
-                    Accept: 'text/html'
-                }
+                url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${key}`
         })
 
-        html = response.data;
+
+        if(!response.data[0]){
+
+            console.log('No instructions found')
+        
+        }
+
+         else{
+
+            console.log(response.data[0]);
+
+            const info=response.data[0].steps.map(item=>{
+                return item.step;
+            })
+
+            setInstructions(info);
+        }
 
     }
 
@@ -57,12 +70,12 @@ const Recipe =(props)=>{
 
                 <br/>
                 
-                <button className='btn' onClick={showIngredients}>Get Ingredients</button>
+                <button className='btn' onClick={showIngredients}>Get Instructions</button>
                 
                 <br/>
-
-                {html}
             
+                {instructions} 
+
             </div>
 
         </div>

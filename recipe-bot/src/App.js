@@ -13,7 +13,9 @@ const App =()=>{
   
   const [recipes,setRecipes]=useState([]);
   
-  
+  const [validation,setValidation]=useState('');
+
+
   async function fetchData (searchValue,slideValue){
     
     const response = await axios({ 
@@ -21,10 +23,6 @@ const App =()=>{
         method: 'get',
 
         url: `https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=${slideValue}&addRecipeNutrition=true&apiKey=${key}`,
-
-        // headers: {
-
-        // }
     
     });
 
@@ -35,7 +33,6 @@ const App =()=>{
     setRecipes(response.data.results);
 
   }
-
 
 
   var searchValue = '';
@@ -55,12 +52,20 @@ const App =()=>{
   const sendData=()=>{
 
     if(searchValue){
+
+        setValidation('');
+        
         fetchData(searchValue,slideValue);
+
+        document.querySelector('.btn').value='';
+
+        document.querySelector('.slider').value=1;
+
     }
 
     else{
 
-        console.log('Enter something bro!')
+        setValidation(<h3 className='alert'>Enter some food item !</h3>);
 
     }
 
@@ -82,7 +87,7 @@ const App =()=>{
             
             <br/><br/><br/>
      
-            <h3 className='text'>Select number of recipes (0 to 10)</h3>
+            <h3 className='text'>Select number of recipes (1 to 10)</h3>
             
             <br/><br/>
 
@@ -92,6 +97,10 @@ const App =()=>{
 
             <button className='btn' onClick={sendData}>Find me Recipes</button>
 
+            <br/> <br/>
+
+            
+            {validation}   
 
             <RecipeArray values={recipes}/>
 
