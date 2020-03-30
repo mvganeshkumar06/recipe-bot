@@ -147,21 +147,21 @@ const App =()=>{
                 <div className='connect'>
                         <h3> You can find me on </h3>
                         
-                        <a href='https://github.com/Ganesh-Kumar6' >
+                        <a href='https://github.com/Ganesh-Kumar6' target='_blank' rel='noopener noreferrer'>
                             
-                            <img src={github} alt='github'  className='icons' target='_blank' rel='noopener noreferer'/>
+                            <img src={github} alt='github'  className='icons'/>
                         
                         </a> 
                         
-                        <a href='https://www.linkedin.com/in/ganesh-kumar-700a26191/' >
+                        <a href='https://www.linkedin.com/in/ganesh-kumar-700a26191/' target='_blank' rel='noopener noreferrer'>
                             
-                            <img src={linkedin} alt='linkedin'  className='icons' target='_blank' rel='noopener noreferer'/>
+                            <img src={linkedin} alt='linkedin'  className='icons' />
                         
                         </a>
                         
-                        <a href='https://twitter.com/Gannyv06' >
+                        <a href='https://twitter.com/Gannyv06' target='_blank' rel='noopener noreferrer'>
                         
-                            <img src={twitter} alt='twitter' className='icons' target='_blank' rel='noopener noreferer'/>
+                            <img src={twitter} alt='twitter' className='icons'/>
                         
                         </a>
                 </div>
