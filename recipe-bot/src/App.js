@@ -37,8 +37,7 @@ const App =()=>{
     }
     
     else{
-
-      console.log(response.data.results);
+      
       setRecipes(response.data.results);
     
     }

@@ -1,9 +1,8 @@
 .recipe-card{
     
     border: 1px solid black;
-    width: auto;
-    margin: 10px 0px 10px 20px;
-    padding: 5px 5px 25px 5px;
+    width: 92vw;
+    margin: 10px 0px;
     box-shadow: 1px 1px 2.5px black;
     color: white;
     font-size: larger;
@@ -11,15 +10,16 @@
 }
 
 .recipe-card:hover{
-
-    transform: scale(1.02,1.02);
-
+    transform: scale(1.01,1.01);
 }
 
-.recipe-container{
-
+.title{
     text-align: center;
+}
 
+.img{
+    width: 500px;
+    height: 500px;
 }
 
 .btn{
@@ -40,4 +40,76 @@
 .btn:hover{
     transform: scale(1.1,1.1);
     box-shadow: 1px 1px black ;
+}
+
+.recipe-grid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-1, .col-2, .col-3, .col-4{
+    justify-self: start;
+    align-self: start;
+    text-align: left;
+    padding: 10px;
+}
+
+.col-1{
+    text-align: center;
+}
+
+.col-1, .col-2,.col-3{
+    flex: 1;
+}
+
+.col-4{
+    flex:4;
+}
+
+
+@media (max-width: 1250px){
+
+    .img{
+        width: 40vw;
+        height: 60vh;
+    }
+
+    .recipe-card{
+        width: 45vw;
+        margin: 10px;
+        padding: 0px;
+    }
+    
+    .recipe-grid{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+    }    
+
+    .col-1, .col-2, .col-3, .col-4{
+        justify-self: center;
+        align-self: center;
+    }
+
+    .col-4{
+        text-align: center;
+    }
+}
+
+@media (max-width: 850px){
+    
+    .img{
+        width: 55vw;
+        height: 40vh;
+    }
+
+    .recipe-card{
+        width: 90vw;
+        margin: 10px;
+        padding: 0px;
+    }
+    
 }

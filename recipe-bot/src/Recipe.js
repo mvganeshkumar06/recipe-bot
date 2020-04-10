@@ -33,62 +33,61 @@ const Recipe =(props)=>{
 
     return(
 
-        <div className='recipe-container'>
-
             <div className='recipe-card'>
-            
-                <h3>{title}</h3>
-                <br/>
 
-                <img src={`${image}`} alt='food' width='300' height='300'/>
-
-                <p>
-                    <br/> <br/>
-                    Ready In: {time} minutes
-                    <br/> <br/>
-                    
-                    Nutrional Information
-                    <br/><br/>
-
-                    Calories: {Math.round(calories)} cal
-                    <br/>
-                    
-                    Protiens: {Math.round(protiens)} g
-                    <br/>
-                    
-                    Carbs: {Math.round(carbs)} g
-                    <br/>
-                    
-                    Fats: {Math.round(fats)} g
-                    <br/> <br/>
-
-                </p>
+                <div className='recipe-grid'>
                 
-
-                <button className='btn' onClick={showIngredients}>Show Ingredients</button>
-                <br/> <br/>
-
-                {ingredients?'Ingredients':null}
-                <br/><br/>
-
-                {ingredients?ingredientsArray:null}
-
-                <br/> <br/>
+                    <div className='col-1'>
+                        <h3 className='title'>{title}</h3>
+                        <br/><br/>
+                        <img src={`${image}`} alt='food' className='img'/>
+                    </div>
                 
-                <button className='btn' onClick={showInstructions}>Show Instructions</button>
-                
-                <br/> <br/>
+                    <div className='col-2'>
+                        <br/> <br/>
+                        Ready In: {time} minutes
+                        <br/> <br/>
+                        
+                        Nutrional Information
+                        <br/><br/>
 
+                        Calories: {Math.round(calories)} cal
+                        <br/>
+                        
+                        Protiens: {Math.round(protiens)} g
+                        <br/>
+                        
+                        Carbs: {Math.round(carbs)} g
+                        <br/>
+                        
+                        Fats: {Math.round(fats)} g
+                        <br/> <br/>
 
-                {instructions?'Instructions':null}
-                <br/><br/>
+                    </div>
+                    
+                    <div className='col-3'>
+                        <button className='btn' onClick={showIngredients}>Show Ingredients</button>
+                        <br/><br/>
 
-                {instructions?instructionsArray:null}
+                        {ingredients?'Ingredients':null}
+                        <br/><br/> 
 
+                        {ingredients?ingredientsArray:null}
+                    </div>
+      
+                    <div className='col-4'>
+                        <button className='btn' onClick={showInstructions}>Show Instructions</button>  
+                        <br/><br/>            
+
+                        {instructions?'Instructions':null}
+                        <br/><br/> 
+
+                        {instructions?instructionsArray:null}
+                    </div>
+
+                </div>
             
             </div>
-
-        </div>
 
     );
 

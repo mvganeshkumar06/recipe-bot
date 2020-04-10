@@ -24,15 +24,23 @@ const RecipeArray =(props)=>{
                 protiens={item.nutrition.nutrients[8].amount}
                 carbs={item.nutrition.nutrients[3].amount}
                 fats={item.nutrition.nutrients[1].amount}
-                ingredientsArray={item.nutrition.ingredients.map(ingredient=>{
-                    return ingredient.name
+                ingredientsArray={item.nutrition.ingredients.map((ingredient,index)=>{
+                    return <p key={index}>{ingredient.name}</p>
                 })}
 
-                instructionsArray={item.analyzedInstructions[0].steps.map(info=>{
-                    return info.step;
-                })}
+                instructionsArray={
+                    
+                    item.analyzedInstructions[0].steps.length>1?
+                    
+                    item.analyzedInstructions[0].steps.map((info,index)=>{
+                    
+                    return <p key={index}>{info.step}</p>
+                
+                }):'Sorry no instructions available :('
+            
+            }
 
-                />
+                /> 
             
             })
     }

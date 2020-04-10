@@ -88,7 +88,7 @@
     width: 35px;
     height: 35px;
     margin: 10px 10px;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .icons:hover{
@@ -140,13 +140,6 @@
 
     .connect{
         margin-top: 10px;
-    }
-
-    .icons{
-        width: 35px;
-        height: 35px;
-        margin: 10px 5px;
-        border-radius: 20px;
     }
 
 }
@@ -204,7 +197,6 @@
         width: 30px;
         height: 30px;
         margin: 10px 15px;
-        border-radius: 20px;
     }
 
 }
@@ -288,7 +280,6 @@
         width: 25px;
         height: 25px;
         margin: 10px 10px;
-        border-radius: 20px;
     }
 
 }
