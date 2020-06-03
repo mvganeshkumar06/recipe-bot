@@ -158,11 +158,6 @@ const App =()=>{
                         
                         </a>
                         
-                        <a href='https://twitter.com/Gannyv06' target='_blank' rel='noopener noreferrer'>
-                        
-                            <img src={twitter} alt='twitter' className='icons'/>
-                        
-                        </a>
                 </div>
 
         </div>
