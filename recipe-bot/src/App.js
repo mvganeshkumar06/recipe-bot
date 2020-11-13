@@ -11,126 +11,100 @@ const App = () => {
 
   const [validation, setValidation] = useState("");
 
-  async function fetchData(searchValue, slideValue) {
-    const response = await axios({
-      method: "get",
+  const [input, setInput] = useState({
+    searchValue: "",
+    slideValue: 1,
+  });
 
-      url: `https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=${slideValue}&instructionsRequired=true&addRecipeNutrition=true&apiKey=${key}`,
-    });
+  async function fetchData(input) {
+    try {
+      const response = await axios({
+        method: "get",
 
-    if (response.data.results.length === 0 || !response.data.results) {
-      setValidation(
-        <h3 className="alert">
-          Sorry no food item found ! Try something else :)
-        </h3>
-      );
-    } else {
-      setRecipes(response.data.results);
+        url: `https://api.spoonacular.com/recipes/complexSearch?query=${input.searchValue}&number=${input.slideValue}&instructionsRequired=true&addRecipeNutrition=true&apiKey=${key}`,
+      });
+
+      if (!response.data.results || response.data.results.length === 0) {
+        setValidation(
+          <p className="notFoundMessage">
+            Sorry no food item found ! Try something else :)
+          </p>
+        );
+      } else {
+        setRecipes(response.data.results);
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
-  var searchValue = "";
-  var slideValue = 0;
-
-  const getSearchValue = (event) => {
-    searchValue = event.target.value;
+  const updateInput = (event) => {
+    setInput({ ...input, [event.target.name]: event.target.value });
   };
 
-  const getSlideValue = (event) => {
-    slideValue = event.target.value;
-  };
+  // const sendData = () => {
+  //   if (searchValue) {
+  //     setValidation("");
 
-  const sendData = () => {
-    if (searchValue) {
-      setValidation("");
+  //     fetchData(searchValue, slideValue);
+  //   } else {
+  //     setValidation(<h3 className="alert">Enter some food item !</h3>);
+  //   }
+  // };
 
-      fetchData(searchValue, slideValue);
-    } else {
-      setValidation(<h3 className="alert">Enter some food item !</h3>);
-    }
-  };
+  // const resetData = () => {
+  //   document.querySelector(".search").value = "";
 
-  const resetData = () => {
-    document.querySelector(".search").value = "";
+  //   document.querySelector(".slider").value = 1;
 
-    document.querySelector(".slider").value = 1;
-
-    setValidation("");
-  };
+  //   setValidation("");
+  // };
 
   return (
-    <div className="app-container">
-      <div className="app">
-        <h1 className="text mainhead">Recipe Bot</h1>
-        <br />
-        <br />
+    <>
+      <div className="inputContainer">
+        <p className="head">Recipe Bot</p>
         <input
           type="text"
+          name="searchValue"
           className="search"
-          placeholder="Enter food name ..."
-          onChange={getSearchValue}
+          placeholder="Enter the food name"
+          onChange={updateInput}
           required
-        ></input>
-        <h3 className="text sliderhead">Select number of recipes (1 to 10)</h3>
-        <input
-          className="slider"
-          type="range"
-          min="1"
-          max="10"
-          onChange={getSlideValue}
         />
-        <br />
-        <button className="btn" onClick={sendData}>
+        <p className="sliderhead">Select number of recipes [1 to 20]</p>
+        <input
+          type="range"
+          name="slideValue"
+          className="slider"
+          min="1"
+          max="20"
+          onChange={updateInput}
+        />
+
+        <button className="btn" onClick={() => fetchData(input)}>
           Find me Recipes
         </button>
-        <button className="btn" type="reset" onClick={resetData}>
-          Reset Values
-        </button>
-        <br /> <br />
+
+        {/* <button className="btn" type="reset" onClick={resetData}>
+          Reset Input
+        </button> */}
+
         <a
           href="https://spoonacular.com/food-api
-            "
+              "
           target="_blank"
           rel="noopener noreferrer"
           className="attribution"
         >
-          POWERED BY SPOONACULAR API
+          Powered by Spoonacular API
         </a>
-        <br /> <br />
+      </div>
+      <div className="outputContainer">
         {validation}
         <RecipeList values={recipes} />
       </div>
-
-      <div className="text infocard">
-        <h3 className="text note">Note</h3>
-        Make sure you reset both the input field and slider before you search
-        for recipes !
-      </div>
-
-      <div className="text devcard">
-        <h3 className="text note">Developed by Ganesh Kumar</h3>
-
-        {/* <div className="connect">
-          <h3> You can find me on </h3>
-
-          <a
-            href="https://github.com/Ganesh-Kumar6"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={github} alt="github" className="icons" />
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/ganesh-kumar-700a26191/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={linkedin} alt="linkedin" className="icons" />
-          </a>
-        </div> */}
-      </div>
-    </div>
+    </>
   );
 };
 
