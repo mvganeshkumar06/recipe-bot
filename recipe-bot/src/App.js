@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import RecipeList from "./RecipeList";
-import "./App.css";
+import css from "./App.module.css";
 import axios from "axios";
 require("dotenv").config();
 
@@ -27,7 +27,7 @@ const App = () => {
       if (!response.data.results || response.data.results.length === 0) {
         setValidation(
           <p className="notFoundMessage">
-            Sorry no food item found ! Try something else :)
+            Sorry no food item found. Try something else
           </p>
         );
       } else {
@@ -42,66 +42,64 @@ const App = () => {
     setInput({ ...input, [event.target.name]: event.target.value });
   };
 
-  // const sendData = () => {
-  //   if (searchValue) {
-  //     setValidation("");
-
-  //     fetchData(searchValue, slideValue);
-  //   } else {
-  //     setValidation(<h3 className="alert">Enter some food item !</h3>);
-  //   }
-  // };
+  const validateAndFetch = () => {
+    console.log(input.searchValue, input.slideValue);
+    if (input.searchValue) {
+      setValidation("");
+      fetchData(input);
+    } else {
+      setValidation(<p className={css.noInput}>Enter some food item !</p>);
+    }
+  };
 
   // const resetData = () => {
-  //   document.querySelector(".search").value = "";
-
-  //   document.querySelector(".slider").value = 1;
-
+  //   // setInput({ searchValue: "", slideValue: 1 });
   //   setValidation("");
   // };
 
   return (
     <>
-      <div className="inputContainer">
-        <p className="head">Recipe Bot</p>
-        <input
-          type="text"
-          name="searchValue"
-          className="search"
-          placeholder="Enter the food name"
-          onChange={updateInput}
-          required
-        />
-        <p className="sliderhead">Select number of recipes [1 to 20]</p>
-        <input
-          type="range"
-          name="slideValue"
-          className="slider"
-          min="1"
-          max="20"
-          onChange={updateInput}
-        />
-
-        <button className="btn" onClick={() => fetchData(input)}>
-          Find me Recipes
-        </button>
-
-        {/* <button className="btn" type="reset" onClick={resetData}>
-          Reset Input
-        </button> */}
-
+      <div className={css.inputContainer}>
+        <p className={css.head}>Recipe Bot</p>
         <a
           href="https://spoonacular.com/food-api
               "
           target="_blank"
           rel="noopener noreferrer"
-          className="attribution"
+          className={css.attribution}
         >
           Powered by Spoonacular API
         </a>
-      </div>
-      <div className="outputContainer">
+        <input
+          type="text"
+          name="searchValue"
+          className={css.search}
+          placeholder="Enter the food name"
+          onChange={updateInput}
+        />
+        <p className={css.sliderhead}>Select number of recipes [1 to 20]</p>
+        <input
+          type="range"
+          name="slideValue"
+          className={css.slider}
+          min="1"
+          max="20"
+          onChange={updateInput}
+        />
+
+        <div className="btnContainer">
+          <button className={css.btn} onClick={() => validateAndFetch(input)}>
+            Find me recipes
+          </button>
+
+          {/* <button className={css.btn} type="reset" onClick={resetData}>
+            Reset Input
+          </button> */}
+        </div>
+
         {validation}
+      </div>
+      <div className={css.outputContainer}>
         <RecipeList values={recipes} />
       </div>
     </>

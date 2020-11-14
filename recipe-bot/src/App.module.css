@@ -1,0 +1,75 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-size: large;
+}
+
+body {
+  background-color: #ffb977;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.head {
+  margin: 5px;
+  font-size: xx-large;
+}
+
+.btn {
+  background-color: rgb(0, 153, 255);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.btn:hover {
+  box-shadow: 1px 1px black;
+}
+
+.search {
+  color: rgb(0, 0, 0);
+}
+
+.sliderhead {
+  margin-top: 40px;
+}
+
+.slider {
+  cursor: pointer;
+  margin: 25px 0px;
+}
+
+.noInput,
+.notFoundMessage {
+  background-color: rgb(255, 47, 47);
+  color: white;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.attribution {
+  color: black;
+  text-decoration: none;
+  margin: 20px;
+  margin-bottom: 40px;
+}
+
+.attribution:hover {
+  color: white;
+}
