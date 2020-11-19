@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RecipeList from "./RecipeList";
 import css from "./App.module.css";
 import axios from "axios";
@@ -15,6 +15,12 @@ const App = () => {
     searchValue: "",
     slideValue: 1,
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      setValidation("");
+    }, 3000);
+  }, [validation]);
 
   async function fetchData(input) {
     try {
@@ -45,17 +51,15 @@ const App = () => {
   const validateAndFetch = () => {
     console.log(input.searchValue, input.slideValue);
     if (input.searchValue) {
-      setValidation("");
       fetchData(input);
     } else {
       setValidation(<p className={css.noInput}>Enter some food item !</p>);
     }
   };
 
-  // const resetData = () => {
-  //   // setInput({ searchValue: "", slideValue: 1 });
-  //   setValidation("");
-  // };
+  const resetData = () => {
+    setInput({ searchValue: "", slideValue: 1 });
+  };
 
   return (
     <>
@@ -75,6 +79,7 @@ const App = () => {
           name="searchValue"
           className={css.search}
           placeholder="Enter the food name"
+          value={input.searchValue}
           onChange={updateInput}
         />
         <p className={css.sliderhead}>Select number of recipes [1 to 20]</p>
@@ -84,6 +89,7 @@ const App = () => {
           className={css.slider}
           min="1"
           max="20"
+          value={input.slideValue}
           onChange={updateInput}
         />
 
@@ -92,9 +98,9 @@ const App = () => {
             Find me recipes
           </button>
 
-          {/* <button className={css.btn} type="reset" onClick={resetData}>
-            Reset Input
-          </button> */}
+          <button className={css.btn} type="reset" onClick={resetData}>
+            Reset
+          </button>
         </div>
 
         {validation}
