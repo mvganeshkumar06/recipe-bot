@@ -1,16 +1,28 @@
 import React, { useState, useContext } from "react";
-import { RecipeItemContext } from "./RecipeItem";
+import { AppContext } from "./App";
+// import {useParams} from "react-router-dom";
 
 const RecipeDetails = () => {
-  const {
-    time,
-    calories,
-    protiens,
-    carbs,
-    fats,
-    ingredientsArray,
-    instructionsArray,
-  } = useContext(RecipeItemContext);
+  const { recipes } = useContext(AppContext);
+  console.log(recipes);
+
+  const time = recipes.readyInMinutes;
+  const calories = recipes.nutrition.nutrients[0].amount;
+  const protiens = recipes.nutrition.nutrients[8].amount;
+  const carbs = recipes.nutrition.nutrients[3].amount;
+  const fats = recipes.nutrition.nutrients[1].amount;
+  const ingredientsArray = recipes.nutrition.ingredients.map(
+    (ingredient, index) => {
+      return <p key={index}>{ingredient.name}</p>;
+    }
+  );
+
+  const instructionsArray =
+    recipes.analyzedInstructions[0].steps.length > 1
+      ? recipes.analyzedInstructions[0].steps.map((info, index) => {
+          return <p key={index}>{info.step}</p>;
+        })
+      : "Sorry no instructions available";
 
   const [instructions, setInstructions] = useState(false);
   const [ingredients, setIngredients] = useState(false);
@@ -30,9 +42,10 @@ const RecipeDetails = () => {
       setIngredients(true);
     }
   };
+
   return (
     <>
-      <div className="col-2">
+      <div>
         <br /> <br />
         Ready In: {time} minutes
         <br /> <br />
@@ -49,10 +62,8 @@ const RecipeDetails = () => {
         <br /> <br />
       </div>
 
-      <div className="col-3">
-        <button className="btn" onClick={showIngredients}>
-          Show Ingredients
-        </button>
+      <div>
+        <button onClick={showIngredients}>Show Ingredients</button>
         <br />
         <br />
 
@@ -63,10 +74,8 @@ const RecipeDetails = () => {
         {ingredients ? ingredientsArray : null}
       </div>
 
-      <div className="col-4">
-        <button className="btn" onClick={showInstructions}>
-          Show Instructions
-        </button>
+      <div>
+        <button onClick={showInstructions}>Show Instructions</button>
         <br />
         <br />
 

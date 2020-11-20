@@ -4,6 +4,8 @@ import css from "./App.module.css";
 import axios from "axios";
 require("dotenv").config();
 
+const AppContext = React.createContext();
+
 const App = () => {
   const key = process.env.REACT_APP_KEY;
 
@@ -49,7 +51,6 @@ const App = () => {
   };
 
   const validateAndFetch = () => {
-    console.log(input.searchValue, input.slideValue);
     if (input.searchValue) {
       fetchData(input);
     } else {
@@ -62,7 +63,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <AppContext.Provider value={recipes && recipes}>
       <div className={css.inputContainer}>
         <p className={css.head}>Recipe Bot</p>
         <a
@@ -106,10 +107,10 @@ const App = () => {
         {validation}
       </div>
       <div className={css.outputContainer}>
-        <RecipeList values={recipes} />
+        <RecipeList />
       </div>
-    </>
+    </AppContext.Provider>
   );
 };
 
-export default App;
+export { App, AppContext };
