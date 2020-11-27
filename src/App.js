@@ -7,7 +7,7 @@ require("dotenv").config();
 const AppContext = React.createContext();
 
 const App = () => {
-  const key = process.env.REACT_APP_KEY;
+  const key = process.env.REACT_APP_KEY || process.env.API_KEY;
 
   const [recipes, setRecipes] = useState([]);
 
