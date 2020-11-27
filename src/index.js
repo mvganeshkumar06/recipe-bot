@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { App, AppContext } from "./App";
+import { App } from "./App";
 import RecipeDetails from "./RecipeDetails";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -11,7 +11,7 @@ ReactDOM.render(
         <App />
       </Route>
       <Route path="/recipiedetails:key">
-        <RecipeDetails appContext={AppContext} />
+        <RecipeDetails />
       </Route>
     </Switch>
   </BrowserRouter>,

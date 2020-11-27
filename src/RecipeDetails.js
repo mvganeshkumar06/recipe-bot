@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "./App";
-// import {useParams} from "react-router-dom";
 
 const RecipeDetails = () => {
   const { recipes } = useContext(AppContext);

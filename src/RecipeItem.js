@@ -9,11 +9,7 @@ const RecipeItem = (props) => {
         <h3 className={css.title}>{title}</h3>
         <img src={`${image}`} alt="food" className={css.img} />
         <button className={css.btn}>
-          <a
-            className={css.link}
-            href={`/recipedetails/${id}`}
-            target="_blanck"
-          >
+          <a className={css.link} href={`/${id}`} target="_blanck">
             Show Details
           </a>
         </button>

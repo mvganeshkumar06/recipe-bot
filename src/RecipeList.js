@@ -4,7 +4,7 @@ import css from "./RecipeList.module.css";
 import { AppContext } from "./App";
 
 const RecipeList = () => {
-  const recipes = useContext(AppContext);
+  const { recipes } = useContext(AppContext);
   let RecipeArray = [];
 
   if (!recipes) {
