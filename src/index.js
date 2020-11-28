@@ -10,7 +10,7 @@ ReactDOM.render(
       <Route exact path="/">
         <App />
       </Route>
-      <Route path="/recipiedetails:key">
+      <Route path="/recipedetails:id">
         <RecipeDetails />
       </Route>
     </Switch>
