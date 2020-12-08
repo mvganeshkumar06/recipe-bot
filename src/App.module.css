@@ -2,11 +2,15 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-size: large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: small;
 }
 
-body {
-  background-color: #ffb977;
+#container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .inputContainer {
@@ -17,8 +21,9 @@ body {
 }
 
 .head {
-  margin: 5px;
-  font-size: xx-large;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: x-large;
 }
 
 .btn {
@@ -30,6 +35,7 @@ body {
   padding: 5px;
   text-align: center;
   text-decoration: none;
+  font-size: medium;
 }
 
 .btnContainer {
@@ -58,18 +64,62 @@ body {
 .notFoundMessage {
   background-color: rgb(255, 47, 47);
   color: white;
-  padding: 10px;
-  margin: 20px;
+  padding: 5px;
+  margin: 20px 0px;
+  border-radius: 5px;
+  font-size: medium;
+}
+
+.outputContainer {
+  margin-bottom: 50px;
+}
+
+footer {
+  margin-top: auto;
+  position: relative;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+#heartIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.iconAttribution {
+  color: rgb(162, 0, 255);
+  margin: 5px 0px;
+}
+
+#socialFooter {
+  display: flex;
+  justify-content: center;
+}
+
+.icons {
+  width: 30px;
+  height: 30px;
+  margin: 0px 1px;
   border-radius: 5px;
 }
 
-.attribution {
-  color: black;
-  text-decoration: none;
-  margin: 20px;
-  margin-bottom: 40px;
+.icons:hover {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.548);
 }
 
-.attribution:hover {
-  color: white;
+@media (min-width: 400px) {
+  * {
+    font-size: medium;
+  }
 }
