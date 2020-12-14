@@ -1,9 +1,8 @@
-import React, { useState, useContext } from "react";
-import { AppContext } from "./App";
+import React, { useState } from "react";
+import css from "./RecipeDetails.module.css";
 
-const RecipeDetails = () => {
-  const { recipes } = useContext(AppContext);
-
+const RecipeDetails = (props) => {
+  const { recipes } = props;
   const time = recipes.readyInMinutes;
   const calories = recipes.nutrition.nutrients[0].amount;
   const protiens = recipes.nutrition.nutrients[8].amount;
@@ -43,13 +42,14 @@ const RecipeDetails = () => {
 
   return (
     <>
-      <div>
-        <br /> <br />
+      <div className={css.container}>
+        <div>
+          <br /> <br />
         Ready In: {time} minutes
         <br /> <br />
         Nutrional Information
         <br />
-        <br />
+          <br />
         Calories: {Math.round(calories)} cal
         <br />
         Protiens: {Math.round(protiens)} g
@@ -58,30 +58,31 @@ const RecipeDetails = () => {
         <br />
         Fats: {Math.round(fats)} g
         <br /> <br />
-      </div>
+        </div>
 
-      <div>
-        <button onClick={showIngredients}>Show Ingredients</button>
-        <br />
-        <br />
+        <div>
+          <button onClick={showIngredients}>Show Ingredients</button>
+          <br />
+          <br />
 
-        {ingredients ? "Ingredients" : null}
-        <br />
-        <br />
+          {ingredients ? "Ingredients" : null}
+          <br />
+          <br />
 
-        {ingredients ? ingredientsArray : null}
-      </div>
+          {ingredients ? ingredientsArray : null}
+        </div>
 
-      <div>
-        <button onClick={showInstructions}>Show Instructions</button>
-        <br />
-        <br />
+        <div>
+          <button onClick={showInstructions}>Show Instructions</button>
+          <br />
+          <br />
 
-        {instructions ? "Instructions" : null}
-        <br />
-        <br />
+          {instructions ? "Instructions" : null}
+          <br />
+          <br />
 
-        {instructions ? instructionsArray : null}
+          {instructions ? instructionsArray : null}
+        </div>
       </div>
     </>
   );

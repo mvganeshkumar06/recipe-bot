@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import RecipeItem from "./RecipeItem";
 import css from "./RecipeList.module.css";
-import { AppContext } from "./App";
 
-const RecipeList = () => {
-  const { recipes } = useContext(AppContext);
+const RecipeList = (props) => {
+  const { recipes } = props;
   let RecipeArray = [];
 
   if (!recipes) {
