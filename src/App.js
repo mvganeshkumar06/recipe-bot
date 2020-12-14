@@ -27,7 +27,7 @@ const App = () => {
                 setValidation(
                     <p className={css.notFoundMessage}>
                         Sorry no food item found. Try something else
-          </p>
+                    </p>
                 );
             } else {
                 setRecipes(response.data.results);
@@ -42,7 +42,7 @@ const App = () => {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/">
-                        <Recipe recipes={recipes} validation={validation} setValidation={setValidation} fetchData={fetchData} />
+                        <Recipe recipes={recipes} setRecipes={setRecipes} validation={validation} setValidation={setValidation} fetchData={fetchData} />
                     </Route>
                     <Route path="/recipedetails:id">
                         <RecipeDetails recipes={recipes} />

@@ -44,43 +44,25 @@ const RecipeDetails = (props) => {
     <>
       <div className={css.container}>
         <div>
-          <br /> <br />
-        Ready In: {time} minutes
-        <br /> <br />
-        Nutrional Information
-        <br />
-          <br />
-        Calories: {Math.round(calories)} cal
-        <br />
-        Protiens: {Math.round(protiens)} g
-        <br />
-        Carbs: {Math.round(carbs)} g
-        <br />
-        Fats: {Math.round(fats)} g
-        <br /> <br />
+          <p>Ready In: {time} minutes</p>
+          <p>Nutrional Information</p>
+          <ul>
+            <li>Calories: {Math.round(calories)} cal</li>
+            <li>Protiens: {Math.round(protiens)} g</li>
+            <li>Carbs: {Math.round(carbs)} g</li>
+            <li>Fats: {Math.round(fats)} g</li>
+          </ul>
         </div>
 
         <div>
           <button onClick={showIngredients}>Show Ingredients</button>
-          <br />
-          <br />
-
           {ingredients ? "Ingredients" : null}
-          <br />
-          <br />
-
           {ingredients ? ingredientsArray : null}
         </div>
 
         <div>
           <button onClick={showInstructions}>Show Instructions</button>
-          <br />
-          <br />
-
           {instructions ? "Instructions" : null}
-          <br />
-          <br />
-
           {instructions ? instructionsArray : null}
         </div>
       </div>

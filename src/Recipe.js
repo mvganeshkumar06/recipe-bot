@@ -3,7 +3,7 @@ import RecipeList from "./RecipeList";
 import css from "./Recipe.module.css";
 
 const Recipe = (props) => {
-  const { validation, setValidation, recipes, fetchData } = props;
+  const { recipes, setRecipes, validation, setValidation, fetchData } = props;
   const [input, setInput] = useState({
     searchValue: "",
     slideValue: 1,
@@ -13,7 +13,7 @@ const Recipe = (props) => {
     setTimeout(() => {
       setValidation("");
     }, 3000);
-  }, [validation]);
+  }, [validation, setValidation]);
 
   const updateInput = (event) => {
     setInput({ ...input, [event.target.name]: event.target.value });
@@ -29,6 +29,7 @@ const Recipe = (props) => {
 
   const resetData = () => {
     setInput({ searchValue: "", slideValue: 1 });
+    setRecipes([]);
   };
 
   return (
