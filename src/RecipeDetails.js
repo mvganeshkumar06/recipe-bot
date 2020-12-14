@@ -3,7 +3,6 @@ import { AppContext } from "./App";
 
 const RecipeDetails = () => {
   const { recipes } = useContext(AppContext);
-  console.log(recipes);
 
   const time = recipes.readyInMinutes;
   const calories = recipes.nutrition.nutrients[0].amount;
@@ -19,8 +18,8 @@ const RecipeDetails = () => {
   const instructionsArray =
     recipes.analyzedInstructions[0].steps.length > 1
       ? recipes.analyzedInstructions[0].steps.map((info, index) => {
-          return <p key={index}>{info.step}</p>;
-        })
+        return <p key={index}>{info.step}</p>;
+      })
       : "Sorry no instructions available";
 
   const [instructions, setInstructions] = useState(false);

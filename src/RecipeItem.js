@@ -12,7 +12,8 @@ const RecipeItem = (props) => {
           <a
             className={css.link}
             href={`/recipedetails/${id}`}
-            target="_blanck"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Show Details
           </a>

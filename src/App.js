@@ -159,7 +159,7 @@ const App = () => {
           >
             Powered by Spoonacular API
         </a>
-          <a className={css.iconAttribution} href="https://icons8.com">Icons by Icons8</a>
+          <a className={css.iconAttribution} href="https://icons8.com" target="_blank" rel="noopener noreferrer">Icons by Icons8</a>
         </footer>
       </div>
     </AppContext.Provider>
