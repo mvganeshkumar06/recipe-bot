@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./RecipeItem.module.css";
+import { Link } from "react-router-dom";
 
 const RecipeItem = (props) => {
   const { id, title, image } = props;
@@ -9,14 +10,12 @@ const RecipeItem = (props) => {
         <h3 className={css.title}>{title}</h3>
         <img src={`${image}`} alt="food" className={css.img} />
         <button className={css.btn}>
-          <a
+          <Link
             className={css.link}
-            href={`/recipedetails/${id}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            to={`/recipedetails/${id}`}
           >
             Show Details
-          </a>
+          </Link>
         </button>
       </div>
     </>

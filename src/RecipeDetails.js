@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import css from "./RecipeDetails.module.css";
+import { useParams } from "react-router-dom";
 
 const RecipeDetails = (props) => {
   const { recipes } = props;
-  const time = recipes.readyInMinutes;
-  const calories = recipes.nutrition.nutrients[0].amount;
-  const protiens = recipes.nutrition.nutrients[8].amount;
-  const carbs = recipes.nutrition.nutrients[3].amount;
-  const fats = recipes.nutrition.nutrients[1].amount;
-  const ingredientsArray = recipes.nutrition.ingredients.map(
+  const { recipeID } = useParams();
+  const recipe = recipes.find((item) => {
+    return item.id === parseInt(recipeID);
+  });
+  const time = recipe.readyInMinutes;
+  const calories = recipe.nutrition.nutrients[0].amount;
+  const protiens = recipe.nutrition.nutrients[8].amount;
+  const carbs = recipe.nutrition.nutrients[3].amount;
+  const fats = recipe.nutrition.nutrients[1].amount;
+  const ingredientsArray = recipe.nutrition.ingredients.map(
     (ingredient, index) => {
       return <p key={index}>{ingredient.name}</p>;
     }
   );
 
   const instructionsArray =
-    recipes.analyzedInstructions[0].steps.length > 1
-      ? recipes.analyzedInstructions[0].steps.map((info, index) => {
+    recipe.analyzedInstructions[0].steps.length > 1
+      ? recipe.analyzedInstructions[0].steps.map((info, index) => {
         return <p key={index}>{info.step}</p>;
       })
       : "Sorry no instructions available";
