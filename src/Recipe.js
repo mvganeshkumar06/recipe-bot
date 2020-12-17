@@ -126,7 +126,7 @@ const Recipe = (props) => {
           rel="noopener noreferrer"
           className={css.iconAttribution}
         >
-          Powered by Spoonacular API
+          Powered by Spoonacular
         </a>
         <a className={css.iconAttribution} href="https://icons8.com" target="_blank" rel="noopener noreferrer">Icons by Icons8</a>
       </footer>
