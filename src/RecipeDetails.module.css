@@ -12,7 +12,8 @@
   justify-content: center;
   margin: 20px 0px;
   border: 1px solid black;
-  box-shadow: 1px 1px 1px 1px black;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
 
 .head{
@@ -36,6 +37,9 @@ ul{
 li{
   margin: 5px 0px;
   list-style-type: none;
+}
+
+.ingredients{
   text-transform: capitalize;
 }
 

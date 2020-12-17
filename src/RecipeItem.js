@@ -14,7 +14,7 @@ const RecipeItem = (props) => {
           to={`/recipedetails/${id}`}
         >
           Show Details
-          </Link>
+        </Link>
       </button>
     </div>
   );

@@ -44,7 +44,7 @@ const Recipe = (props) => {
           value={input.searchValue}
           onChange={updateInput}
         />
-        <p className={css.sliderhead}>Select number of recipes [1 to 20]</p>
+        <p className={css.sliderhead}>Select number of recipes (1-20)</p>
         <input
           type="range"
           name="slideValue"
@@ -56,7 +56,7 @@ const Recipe = (props) => {
         />
 
         <div className={css.btnContainer}>
-          <button className={css.btn} onClick={() => validateAndFetch(input)}>
+          <button className={css.btn} onClick={validateAndFetch}>
             Find me recipes
           </button>
 

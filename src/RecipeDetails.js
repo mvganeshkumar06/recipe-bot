@@ -17,14 +17,14 @@ const RecipeDetails = (props) => {
   const fats = recipe.nutrition.nutrients[1].amount;
   const ingredientsArray = recipe.nutrition.ingredients.map(
     (ingredient, index) => {
-      return <p key={index}>{ingredient.name}</p>;
+      return <li key={index}>{ingredient.name}</li>;
     }
   );
 
   const instructionsArray =
     recipe.analyzedInstructions[0].steps.length > 1
       ? recipe.analyzedInstructions[0].steps.map((info, index) => {
-        return <p key={index}>{info.step}</p>;
+        return <li key={index}>{info.step}</li>;
       })
       : "Sorry no instructions available";
 
@@ -65,16 +65,12 @@ const RecipeDetails = (props) => {
         <button className={css.btn} onClick={showIngredients}>{ingredients ? "Hide " : "Show "} Ingredients</button>
 
         <p className={css.head}>{ingredients && "Ingredients"}</p>
-        <ul>{ingredients && ingredientsArray.map((item) => {
-          return <li>{item}</li>;
-        })}</ul>
+        <ul className={css.ingredients} >{ingredients && ingredientsArray}</ul>
 
         <button className={css.btn} onClick={showInstructions}>{instructions ? "Hide " : "Show "}  Instructions</button>
 
         <p className={css.head}>{instructions && "Instructions"}</p>
-        <ul>{instructions && instructionsArray.map((item) => {
-          return <li>{item}</li>;
-        })}</ul>
+        <ul>{instructions && instructionsArray}</ul>
       </div>
     </div>
   );

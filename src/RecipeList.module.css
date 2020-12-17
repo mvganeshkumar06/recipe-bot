@@ -9,6 +9,7 @@
 @media (min-width: 400px) {
   .list {
     flex-direction: row;
+    align-items: center;
     flex-wrap: wrap;
   }
 }

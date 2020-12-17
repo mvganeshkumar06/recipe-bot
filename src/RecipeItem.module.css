@@ -3,7 +3,9 @@
   width: 280px;
   height: 250px;
   margin: 10px;
-  box-shadow: 1px 1px 5px 1px rgb(65, 65, 65);
+  padding: 15px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
   font-size: larger;
   display: flex;
   flex-direction: column;
