@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 
 const RecipeDetails = (props) => {
   const { recipes } = props;
-  const { recipeID } = useParams();
+  const { id } = useParams();
   const recipe = recipes.find((item) => {
-    return item.id === parseInt(recipeID);
+    return item.id === parseInt(id);
   });
+  const title = recipe.title;
+  const image = recipe.image;
   const time = recipe.readyInMinutes;
   const calories = recipe.nutrition.nutrients[0].amount;
   const protiens = recipe.nutrition.nutrients[8].amount;
@@ -46,32 +48,35 @@ const RecipeDetails = (props) => {
   };
 
   return (
-    <>
-      <div className={css.container}>
-        <div>
-          <p>Ready In: {time} minutes</p>
-          <p>Nutrional Information</p>
-          <ul>
-            <li>Calories: {Math.round(calories)} cal</li>
-            <li>Protiens: {Math.round(protiens)} g</li>
-            <li>Carbs: {Math.round(carbs)} g</li>
-            <li>Fats: {Math.round(fats)} g</li>
-          </ul>
-        </div>
+    <div className={css.container}>
+      <div className={css.item}>
+        <p className={css.head}>{title}</p>
+        <img src={`${image}`} alt="food" className={css.img} />
+        <p>Ready In: {time} minutes</p>
 
-        <div>
-          <button onClick={showIngredients}>Show Ingredients</button>
-          {ingredients ? "Ingredients" : null}
-          {ingredients ? ingredientsArray : null}
-        </div>
+        <p className={css.head}>Nutrional Information</p>
+        <ul>
+          <li>Calories: {Math.round(calories)} cal</li>
+          <li>Protiens: {Math.round(protiens)} g</li>
+          <li>Carbs: {Math.round(carbs)} g</li>
+          <li>Fats: {Math.round(fats)} g</li>
+        </ul>
 
-        <div>
-          <button onClick={showInstructions}>Show Instructions</button>
-          {instructions ? "Instructions" : null}
-          {instructions ? instructionsArray : null}
-        </div>
+        <button className={css.btn} onClick={showIngredients}>{ingredients ? "Hide " : "Show "} Ingredients</button>
+
+        <p className={css.head}>{ingredients && "Ingredients"}</p>
+        <ul>{ingredients && ingredientsArray.map((item) => {
+          return <li>{item}</li>;
+        })}</ul>
+
+        <button className={css.btn} onClick={showInstructions}>{instructions ? "Hide " : "Show "}  Instructions</button>
+
+        <p className={css.head}>{instructions && "Instructions"}</p>
+        <ul>{instructions && instructionsArray.map((item) => {
+          return <li>{item}</li>;
+        })}</ul>
       </div>
-    </>
+    </div>
   );
 };
 

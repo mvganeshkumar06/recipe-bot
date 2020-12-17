@@ -38,18 +38,16 @@ const App = () => {
     }
 
     return (
-        <>
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path="/">
-                        <Recipe recipes={recipes} setRecipes={setRecipes} validation={validation} setValidation={setValidation} fetchData={fetchData} />
-                    </Route>
-                    <Route path="/recipedetails:id">
-                        <RecipeDetails recipes={recipes} />
-                    </Route>
-                </Switch>
-            </BrowserRouter>
-        </>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/">
+                    <Recipe recipes={recipes} setRecipes={setRecipes} validation={validation} setValidation={setValidation} fetchData={fetchData} />
+                </Route>
+                <Route path="/recipedetails/:id">
+                    <RecipeDetails recipes={recipes} />
+                </Route>
+            </Switch>
+        </BrowserRouter>
     );
 
 }
