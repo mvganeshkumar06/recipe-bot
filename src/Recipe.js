@@ -85,7 +85,7 @@ const Recipe = (props) => {
             />
           </a>
           <a
-            href="https://github.com/Ganesh-Kumar6"
+            href="https://github.com/mvganeshkumar06"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -97,7 +97,7 @@ const Recipe = (props) => {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/ganesh-kumar6"
+            href="https://www.linkedin.com/in/mvganeshkumar06"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -108,7 +108,18 @@ const Recipe = (props) => {
             />
           </a>
           <a
-            href="https://dev.to/ganeshkumar6"
+            href="https://twitter.com/mvganeshkumar06"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className={css.icons}
+              src="https://img.icons8.com/fluent/48/000000/twitter.png"
+              alt="twitter"
+            />
+          </a>
+          <a
+            href="https://dev.to/mvganeshkumar06"
             target="_blank"
             rel="noopener noreferrer"
           >
